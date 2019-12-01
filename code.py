@@ -15,12 +15,21 @@ LEFT = 3
 
 MOVING_DIRECTION = -1
 
+HIDE_SPLASH_TIME = -1
+
 # how long to wait between rendering frames
 FPS_DELAY = 1/30
 
 # how many tiles can fit on thes screen. Tiles are 16x16
 SCREEN_HEIGHT_TILES = 8
 SCREEN_WIDTH_TILES = 10
+
+MAP_LIST = [
+    "map.csv",
+    "map1.csv"
+]
+
+CUR_MAP_INDEX = 0
 
 # hold the map state as it came out of the csv. Only holds non-entities.
 ORIGINAL_MAP = {}
@@ -84,7 +93,7 @@ def take_item(to_coords, from_coords, entity_obj):
 
     
 def heart_walk(to_coords, from_coords, entity_obj):
-    global PLAYER_LOC
+    global PLAYER_LOC, CUR_MAP_INDEX
     print("inside heart_walk")
     print("%s -> %s" % (from_coords, to_coords))
     if "robot" in INVENTORY:
@@ -94,7 +103,10 @@ def heart_walk(to_coords, from_coords, entity_obj):
         group.append(splash)
         time.sleep(2)
         group.remove(splash)
-        load_map("map.csv")
+        CUR_MAP_INDEX += 1
+        if CUR_MAP_INDEX >= len(MAP_LIST):
+            CUR_MAP_INDEX = 0
+        load_map(MAP_LIST[CUR_MAP_INDEX])
     else:
         return False
    
@@ -167,7 +179,7 @@ def water_walk(to_coords, from_coords, tile_name):
         group.append(splash)
         time.sleep(2)
         group.remove(splash)
-        load_map("map.csv")
+        load_map(MAP_LIST[CUR_MAP_INDEX])
 
 # behavior function that makes the player lose if they don't have the fire shoes
 def fire_walk(to_coords, from_coords, tile_name):
@@ -194,7 +206,7 @@ def fire_walk(to_coords, from_coords, tile_name):
         group.append(splash)
         time.sleep(2)
         group.remove(splash)
-        load_map("map.csv")
+        load_map(MAP_LIST[CUR_MAP_INDEX])
 
 
 # behavior function that makes the player slide across this tile
@@ -877,7 +889,7 @@ def load_map(file_name):
 
 # Add the Group to the Display
 
-load_map("map.csv")
+load_map(MAP_LIST[CUR_MAP_INDEX])
 group.append(sprite_group)
 
 display.show(group)
@@ -886,6 +898,11 @@ prev_up = False
 prev_down = False
 prev_left = False
 prev_right = False
+
+prev_b = False
+prev_a = False
+prev_start = False
+prev_select = False
 
 # helper function returns true if player is allowed to move given direction
 # based on can_walk property of the tiles next to the player
@@ -1060,7 +1077,26 @@ while True:
     cur_down = badger.button.down
     cur_right = badger.button.right
     cur_left = badger.button.left
-
+    
+    cur_a = badger.button.a
+    cur_b = badger.button.b
+    cur_start = badger.button.start
+    cur_select = badger.button.select
+    
+    # check for up button press / release
+    if not cur_start and prev_start:
+        text_area.text = "Press B\nto Restart"
+        text_area.y = int(128/2 - 30)
+        group.append(splash)
+        HIDE_SPLASH_TIME = now + 3
+        
+    if not cur_b and prev_b:
+        if HIDE_SPLASH_TIME > now:
+            if text_area.text == "Press B\nto Restart":
+                HIDE_SPLASH_TIME = -1
+                group.remove(splash)
+                load_map(MAP_LIST[CUR_MAP_INDEX])
+            
     # check for up button press / release
     if not cur_up and prev_up:
         if can_player_move(UP):
@@ -1100,12 +1136,18 @@ while True:
     prev_right = cur_right
     prev_left = cur_left
 
+    prev_select = cur_select
+    prev_start = cur_start
+    prev_a = cur_a
+    prev_b = cur_b
+    
+    
     # current time
     now = time.monotonic()
 
     # if it has been long enough based on FPS delay
     if now > last_update_time + FPS_DELAY:
-
+        
         camera_loc = (max(0, PLAYER_LOC[0]-4), max(0, PLAYER_LOC[1]-3))
         set_camera_view(camera_loc[0], camera_loc[1], 10, 8)
 
@@ -1114,3 +1156,8 @@ while True:
 
         # store the last update time
         last_update_time = now
+        
+        if HIDE_SPLASH_TIME != -1:
+            if HIDE_SPLASH_TIME < now:
+                group.remove(splash)
+                HIDE_SPLASH_TIME = -1
