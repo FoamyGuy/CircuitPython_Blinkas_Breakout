@@ -9,6 +9,10 @@ In doing so one must take care not to go in the water or fire unless they've acq
 
 Ice and Conveyor belts will cause Blinka to slide and be pushed along unless Blinka has gotten the appropriate boots.
 
+If you get stuck you can restart the level by pressing Start and then B.
+
 This game serves as a more fully fleshed out example of the [CSV Tilemap Game system](https://hackaday.io/project/168653-csv-tilemap-game)
 
 Try building your own maps by copying and editing the map csv file.
+
+![yt link](https://www.youtube.com/watch?v=BHfWRG_zF90)
