@@ -15,4 +15,4 @@ This game serves as a more fully fleshed out example of the [CSV Tilemap Game sy
 
 Try building your own maps by copying and editing the map csv file.
 
-![https://raw.githubusercontent.com/FoamyGuy/CircuitPython_Blinkas_Breakout/master/yt_link.png](https://www.youtube.com/watch?v=BHfWRG_zF90)
+[![https://raw.githubusercontent.com/FoamyGuy/CircuitPython_Blinkas_Breakout/master/yt_link.png](Youtube Link)](https://www.youtube.com/watch?v=BHfWRG_zF90)
