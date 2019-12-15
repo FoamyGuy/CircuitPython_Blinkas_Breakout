@@ -37,6 +37,9 @@ ORIGINAL_MAP = {}
 # hold the current map state if/when it changes. Only holds non-entities.
 CURRENT_MAP = {}
 
+MAP_HEIGHT = 0
+MAP_WIDTH = 0
+
 # dictionary with tuple keys that map to tile type values
 # e.x. {(0,0): "left_wall", (1,1): "floor"}
 CAMERA_VIEW = {}
@@ -91,7 +94,7 @@ def take_item(to_coords, from_coords, entity_obj):
 
     return True;
 
-    
+
 def heart_walk(to_coords, from_coords, entity_obj):
     global PLAYER_LOC, CUR_MAP_INDEX
     print("inside heart_walk")
@@ -109,7 +112,7 @@ def heart_walk(to_coords, from_coords, entity_obj):
         load_map(MAP_LIST[CUR_MAP_INDEX])
     else:
         return False
-   
+
 def robot_walk(to_coords, from_coords, entity_obj):
     global PLAYER_LOC
     print("inside robot_walk")
@@ -128,7 +131,7 @@ def robot_walk(to_coords, from_coords, entity_obj):
         return True
     else:
         return False
-    
+
 def door_walk(to_coords, from_coords, entity_obj):
     door_key_dict = {
         "door": "key",
@@ -770,7 +773,7 @@ sprite = None
 def load_map(file_name):
     global sprite, ORIGINAL_MAP, CURRENT_MAP, ENTITY_SPRITES
     global ENTITY_SPRITES_DICT, INVENTORY, PLAYER_LOC, sprite_group
-    global CAMERA_VIEW
+    global CAMERA_VIEW, MAP_HEIGHT, MAP_WIDTH
     global group
     global MAP_CHIP_COUNT
 
@@ -797,6 +800,10 @@ def load_map(file_name):
 
     # split the raw string into lines
     map_csv_lines = map_csv_str.replace("\r", "").split("\n")
+
+    # if the last row is empty then remove it
+    if len(map_csv_lines[-1]) == 0:
+        del map_csv_lines[-1]
 
     # set the WIDTH and HEIGHT variables.
     # this assumes the map is rectangular.
@@ -1077,26 +1084,26 @@ while True:
     cur_down = badger.button.down
     cur_right = badger.button.right
     cur_left = badger.button.left
-    
+
     cur_a = badger.button.a
     cur_b = badger.button.b
     cur_start = badger.button.start
     cur_select = badger.button.select
-    
+
     # check for up button press / release
     if not cur_start and prev_start:
         text_area.text = "Press B\nto Restart"
         text_area.y = int(128/2 - 30)
         group.append(splash)
         HIDE_SPLASH_TIME = now + 3
-        
+
     if not cur_b and prev_b:
         if HIDE_SPLASH_TIME > now:
             if text_area.text == "Press B\nto Restart":
                 HIDE_SPLASH_TIME = -1
                 group.remove(splash)
                 load_map(MAP_LIST[CUR_MAP_INDEX])
-            
+
     # check for up button press / release
     if not cur_up and prev_up:
         if can_player_move(UP):
@@ -1140,23 +1147,30 @@ while True:
     prev_start = cur_start
     prev_a = cur_a
     prev_b = cur_b
-    
-    
+
+
     # current time
     now = time.monotonic()
 
     # if it has been long enough based on FPS delay
     if now > last_update_time + FPS_DELAY:
-        
-        camera_loc = (max(0, PLAYER_LOC[0]-4), max(0, PLAYER_LOC[1]-3))
-        set_camera_view(camera_loc[0], camera_loc[1], 10, 8)
+
+        #camera_loc = (max(0, PLAYER_LOC[0]-4), max(0, PLAYER_LOC[1]-3))
+        #set_camera_view(camera_loc[0], camera_loc[1], 10, 8)
+
+        set_camera_view(
+            max(min(PLAYER_LOC[0]-4,MAP_WIDTH-SCREEN_WIDTH_TILES),0),
+            max(min(PLAYER_LOC[1]-3,MAP_HEIGHT-SCREEN_HEIGHT_TILES),0),
+            10,
+            8
+        )
 
         # draw the camera
         draw_camera_view()
 
         # store the last update time
         last_update_time = now
-        
+
         if HIDE_SPLASH_TIME != -1:
             if HIDE_SPLASH_TIME < now:
                 group.remove(splash)

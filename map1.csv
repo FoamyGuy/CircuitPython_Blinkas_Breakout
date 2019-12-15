@@ -6,7 +6,7 @@ left_wall,floor,ice_floor_bottom_left,ice_floor,floor,conveyor_up,floor,floor,fl
 left_wall,floor,floor,floor,floor,conveyor_up,floor,floor,player,floor,floor,floor,floor,right_wall
 left_wall,floor,floor,floor,floor,conveyor_up,conveyor_left,floor,floor,floor,floor,bottom_wall,bottom_wall,bottom_right_wall
 left_wall,floor,floor,floor,floor,left_wall,floor,floor,floor,floor,conveyor_right,red_key,right_wall,
-left_wall,top_wall,top_right_wall,top_wall,red_door,top_wall,top_wall,top_wall,top_left_wall,top_wall,top_wall,top_wall,right_wall,
+left_wall,top_wall,top_right_wall,top_wall,red_door,top_wall,top_wall,top_wall,top_left_wall,top_wall,conveyor_up,top_wall,right_wall,
 left_wall,chip,cyan_door,floor,fire_floor,floor,key,floor,yellow_door,floor,floor,conveyor_shoes,right_wall,
 left_wall,robot,right_wall,floor,floor,floor,floor,floor,left_wall,cyan_key,floor,chip,right_wall,
 bottom_left_wall,bottom_wall,bottom_right_wall,bottom_wall,door,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,red_door,right_wall,
