@@ -25,8 +25,9 @@ SCREEN_HEIGHT_TILES = 8
 SCREEN_WIDTH_TILES = 10
 
 MAP_LIST = [
-    "map.csv",
-    "map1.csv"
+    "map0.csv",
+    "map1.csv",
+    "map2.csv"
 ]
 
 CUR_MAP_INDEX = 0
@@ -387,8 +388,14 @@ def ice_slide(to_coords, from_coords, tile_name):
 
         PLAYER_LOC = to_coords
 
-        camera_loc = (max(0, PLAYER_LOC[0]-4), max(0, PLAYER_LOC[1]-3))
-        set_camera_view(camera_loc[0], camera_loc[1], 10, 8)
+        #camera_loc = (max(0, PLAYER_LOC[0]-4), max(0, PLAYER_LOC[1]-3))
+        #set_camera_view(camera_loc[0], camera_loc[1], 10, 8)
+        set_camera_view(
+            max(min(PLAYER_LOC[0]-4,MAP_WIDTH-SCREEN_WIDTH_TILES),0),
+            max(min(PLAYER_LOC[1]-3,MAP_HEIGHT-SCREEN_HEIGHT_TILES),0),
+            10,
+            8
+        )
         # draw the camera
         draw_camera_view()
 

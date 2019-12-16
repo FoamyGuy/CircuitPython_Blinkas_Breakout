@@ -1,0 +1,17 @@
+top_left_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_right_wall,top_wall,top_wall,top_wall,top_right_wall
+left_wall,chip,floor,player,floor,floor,right_wall,floor,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,right_wall
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,chip,floor,floor,red_key,floor,right_wall,floor,heart,floor,right_wall
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,right_wall
+left_wall,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,floor,ice_floor_top_right,right_wall,floor,floor,floor,right_wall
+left_wall,ice_floor_bottom_left,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor_bottom_right,right_wall,,ice_floor,,
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,floor,floor,floor,right_wall,,ice_floor,,
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,floor,floor,floor,right_wall,,ice_floor,,
+left_wall,floor,floor,floor,floor,floor,water_floor,water_floor,water_floor,water_floor,water_floor,water_floor,water_floor,right_wall,,ice_floor,,
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,floor,floor,floor,floor,floor,right_wall,,ice_floor,,
+left_wall,floor,floor,floor,floor,floor,right_wall,floor,chip,floor,floor,floor,floor,right_wall,,ice_floor,,
+left_wall,chip,floor,floor,floor,water_shoes,right_wall,floor,floor,floor,floor,floor,floor,right_wall,,ice_floor,,
+left_wall,bottom_wall,red_door,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,bottom_right_wall,,ice_floor,,
+left_wall,floor,floor,floor,right_wall,,,,,,,,,,,ice_floor,,
+left_wall,floor,floor,floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor,ice_floor_bottom_right,,
+left_wall,floor,robot,floor,right_wall,,,,,,,,,,,,,
+bottom_left_wall,bottom_wall,bottom_wall,bottom_wall,bottom_right_wall,,,,,,,,,,,,,
