@@ -25,9 +25,11 @@ SCREEN_HEIGHT_TILES = 8
 SCREEN_WIDTH_TILES = 10
 
 MAP_LIST = [
-    "map0.csv",
+    "map.csv",
     "map1.csv",
-    "map2.csv"
+    "map2.csv",
+    "map3.csv"
+    
 ]
 
 CUR_MAP_INDEX = 0
@@ -923,18 +925,26 @@ prev_select = False
 def can_player_move(direction):
     if direction == UP:
         tile_above_coords = (PLAYER_LOC[0], PLAYER_LOC[1] - 1)
+        if tile_above_coords[1] < 0:
+            return False
         return TILES[CURRENT_MAP[tile_above_coords[0], tile_above_coords[1]]]['can_walk']
 
     if direction == DOWN:
         tile_below_coords = (PLAYER_LOC[0], PLAYER_LOC[1] + 1)
+        if tile_below_coords[1] >= MAP_HEIGHT:
+            return False
         return TILES[CURRENT_MAP[tile_below_coords[0], tile_below_coords[1]]]['can_walk']
 
     if direction == LEFT:
         tile_left_of_coords = (PLAYER_LOC[0]-1, PLAYER_LOC[1])
+        if tile_left_of_coords[0] < 0:
+            return False
         return TILES[CURRENT_MAP[tile_left_of_coords[0], tile_left_of_coords[1]]]['can_walk']
 
     if direction == RIGHT:
         tile_right_of_coords = (PLAYER_LOC[0] + 1, PLAYER_LOC[1])
+        if tile_right_of_coords[0] >= MAP_WIDTH:
+            return False
         return TILES[CURRENT_MAP[tile_right_of_coords[0], tile_right_of_coords[1]]]['can_walk']
 
 # set the appropriate tiles into the CAMERA_VIEW dictionary
