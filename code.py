@@ -29,7 +29,8 @@ MAP_LIST = [
     "map1.csv",
     "map2.csv",
     "map3.csv",
-    "map4.csv"
+    "map4.csv",
+    "map5.csv"
 ]
 
 CUR_MAP_INDEX = 0

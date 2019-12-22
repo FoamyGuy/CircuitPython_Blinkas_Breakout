@@ -1,0 +1,14 @@
+,,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,top_wall,,
+,,left_wall,floor,floor,floor,left_wall,floor,right_wall,floor,floor,floor,right_wall,,
+,,left_wall,floor,chip,floor,left_wall,heart,right_wall,floor,chip,floor,right_wall,,
+left_wall,top_wall,top_wall,top_wall,left_wall,door,left_wall,robot,right_wall,door,bottom_wall,bottom_wall,right_wall,top_wall,right_wall
+left_wall,floor,yellow_key,floor,cyan_door,floor,floor,floor,floor,floor,red_door,floor,yellow_key,floor,right_wall
+left_wall,floor,chip,floor,left_wall,cyan_key,floor,floor,floor,red_key,right_wall,floor,chip,floor,right_wall
+left_wall,bottom_wall,bottom_wall,bottom_wall,left_wall,chip,floor,player,floor,chip,right_wall,bottom_wall,bottom_wall,bottom_wall,right_wall
+left_wall,floor,chip,floor,left_wall,cyan_key,floor,floor,floor,red_key,right_wall,floor,chip,floor,right_wall
+left_wall,floor,key,floor,red_door,floor,floor,chip,floor,floor,cyan_door,floor,floor,floor,right_wall
+left_wall,bottom_wall,bottom_wall,bottom_wall,bottom_wall,top_wall,yellow_door,top_wall,yellow_door,top_wall,right_wall,bottom_wall,bottom_wall,bottom_wall,right_wall
+,,,,left_wall,floor,floor,right_wall,floor,floor,right_wall,,,,
+,,,,left_wall,floor,chip,right_wall,chip,floor,right_wall,,,,
+,,,,left_wall,floor,floor,right_wall,key,floor,right_wall,,,,
+,,,,left_wall,bottom_wall,bottom_wall,right_wall,bottom_wall,bottom_wall,right_wall,,,,
